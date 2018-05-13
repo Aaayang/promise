@@ -1,13 +1,20 @@
-let Promise = require('./p_02');
+let Promise = require('./p_03');
 
-let p = new Promise(function(resolve, reject) {
-    setTimeout(() => {
-        reject(233);
-    }, 1000);
+let p = new Promise((resolve, reject) => {
+    resolve(111);
 });
 
-p.then(function(data) {
+
+p.then(data => {
+    return data;
+}, reason => {
+    
+}).then(data => {
+    return data;
+}, reason => {
+    
+}).then(data => {
     console.log(data);
-}, function(reason) {
-    console.log(reason, 233);
+}, reason => {
+    
 });
