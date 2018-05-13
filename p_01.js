@@ -18,7 +18,11 @@ class Promise {
                 this.reason = reason;
             }
         }
-        executor(resolve, reject);
+        try {
+            executor(resolve, reject);
+        } catch(e) {
+            reject(e);
+        }
     }
     // 然后再执行这里的then
     then(onFulFilled, onRejected) {
