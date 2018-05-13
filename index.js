@@ -1,7 +1,9 @@
-let Promise = require('./p_01');
+let Promise = require('./p_02');
 
 let p = new Promise(function(resolve, reject) {
-    throw new Error('err...');
+    setTimeout(() => {
+        reject(233);
+    }, 1000);
 });
 
 p.then(function(data) {
