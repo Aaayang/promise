@@ -162,7 +162,7 @@ class Promise {
     }
 }
 
-Promise.deferred = defer = function() {
+Promise.deferred = Promise.defer = function() {
     let dfd = {};
     dfd.promise = new Promise((resolve, reject) => {
         dfd.resolve = resolve;
