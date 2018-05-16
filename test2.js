@@ -1,4 +1,4 @@
-let Promise = require('./p_09');
+let P = require('./p_10');
 
 // let p = new Promise((resolve, reject) => {
 //     reject('err');
@@ -13,3 +13,24 @@ let Promise = require('./p_09');
 // Promise.reject('hello').catch(err => {
 //     console.log(err);
 // });
+
+let fs = require('fs');
+
+function read(url) {
+    let defer = P.defer();
+    fs.readFile(url, 'utf8', (err, data) => {
+        if(err) defer.reject(err);
+        defer.resolve(data);
+    });
+    return defer.promise;
+}
+
+// 全成功则成功，有失败则失败
+P.all([
+    read('./a.txt'),
+    read('./b.txt')
+]).then(arr => {
+    console.log(arr);
+}, err=>{
+    console.log(err);
+});
