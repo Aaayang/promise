@@ -201,6 +201,15 @@ Promise.all = (promises) => {
     });
 };
 
+Promise.race = (promises) => {
+    return new Promise((resolve, reject) => {
+        for (let i = 0; i < promises.length; i++) {
+            // 一调then就执行了
+            promises[i].then(resolve, reject);
+        }
+    });
+};
+
 
 Promise.deferred = Promise.defer = function() {
     let dfd = {};

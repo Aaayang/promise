@@ -26,11 +26,21 @@ function read(url) {
 }
 
 // 全成功则成功，有失败则失败
-P.all([
+/* P.all([
     read('./a.txt'),
     read('./b.txt')
 ]).then(arr => {
     console.log(arr);
 }, err=>{
     console.log(err);
-});
+}); */
+
+// 谁快用谁的，无论错误还是失败
+/* P.race([
+    read('./b.txt'),
+    read('./a.txt')
+]).then(arr => {
+    console.log(arr);
+}, err => {
+    console.log(err);
+}); */
