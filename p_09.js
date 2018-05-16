@@ -167,6 +167,13 @@ class Promise {
     }
 }
 
+Promise.resolve = (val) => {
+    return new Promise((resolve, reject) => resolve(val));
+};
+Promise.reject = (val) => {
+    return new Promise((resolve, reject) => reject(val));
+};
+
 Promise.deferred = Promise.defer = function() {
     let dfd = {};
     dfd.promise = new Promise((resolve, reject) => {
