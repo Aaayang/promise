@@ -1,13 +1,14 @@
+// 这里的 resolve 和 reject 都是 promise2 的
 function resolvePromise(promise2, x, resolve, reject) {
     // 怎么才能等于自己？
     if(promise2 === x) {
         return reject(new TypeError('循环引用'));
     }
-
+    // 判断是否是 promise
     if(x !== null && (typeof x === 'object' || typeof x === 'function')) {
         
     } else {
-        // 直接走成功
+        // 就是个普通值，例如123，直接走成功
         resolve(x);
     }
 }

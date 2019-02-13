@@ -25,6 +25,8 @@ function resolvePromise(promise2, x, resolve, reject) {
 
             if(typeof then === 'function') {
                 // 可以认为是promise了
+                // 执行 promise
+                // call 第一个参数是this，后面的是成功和失败的回调
                 then.call(x, y => {
                     // resolve的结果依旧可能是个promise
                     // resolve(y);
