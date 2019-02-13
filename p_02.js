@@ -3,6 +3,7 @@ class Promise {
         this.status = 'pending';
         this.value = undefined;
         this.reason = undefined;
+        // 搞个数组为了可以写多个 p.then p.then 都执行
         this.onFulFilledCallbacks = [];
         this.onRejectedCallbacks = [];
 
@@ -16,7 +17,7 @@ class Promise {
                 /* function () {
                     onFulFilled(this.value);
                 } */
-
+                // 客户调用 resolve 的时候执行
                 this.onFulFilledCallbacks.forEach((item) => item());
             }
         }
@@ -25,9 +26,8 @@ class Promise {
             if (this.status === 'pending') {
                 this.status = 'rejected';
                 this.reason = reason;
+                this.onRejectedCallbacks.forEach((item) => item());
             }
-
-            this.onRejectedCallbacks.forEach((item) => item());
         }
         try {
             executor(resolve, reject);
